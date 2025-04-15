@@ -1,0 +1,12 @@
+# Ignore secret files
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code settings (optional)
+.vscode/
+
+# Virtual environments
+venv/
