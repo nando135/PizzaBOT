@@ -4,17 +4,17 @@ from chatbot.pizza_functions import PizzaFunctions
 import google.generativeai as genai
 
 
-
-
-# Load API key securely: from Streamlit secrets or local .env
-if "GOOGLE_API_KEY" in st.secrets:
-    genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-else:
+import os
+# ✅ Load from Streamlit Cloud secrets if available
+try:
+    api_key = st.secrets["GOOGLE_API_KEY"]
+except Exception:
+    # ✅ Fallback to local .env
     from dotenv import load_dotenv
-    import os
     load_dotenv()
-    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+    api_key = os.getenv("GOOGLE_API_KEY")
 
+genai.configure(api_key=api_key)
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
