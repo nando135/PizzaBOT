@@ -5,7 +5,6 @@ import google.generativeai as genai
 
 
 import os
-
 # ✅ Load from Streamlit Cloud secrets if available
 try:
     api_key = st.secrets["GOOGLE_API_KEY"]
